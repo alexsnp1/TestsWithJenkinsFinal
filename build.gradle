@@ -31,33 +31,26 @@ dependencies {
 
     )
 }
-test {
-    systemProperties += System.properties
-    useJUnitPlatform()
-}
-
-//tasks.withType(Test) {
+//test {
+//    systemProperties += System.properties
 //    useJUnitPlatform()
-//
-//    //этим мы расширяем логирование и при запуске теста в консоль
-//    //будет выводиться больше данных
-//    testLogging {
-//        lifecycle {
-//            events "started", "skipped", "failed", "standard_error", "standard_out"
-//            exceptionFormat "short"
-//        }
-//    }
 //}
-//    //отдельная кастомная таска
-//    task simple_test(type: Test) {
-//        useJUnitPlatform {
-//            includeTags("simple")
-//            // только для класса с тегом simple (ну или метода если угодно, у нас класс)
-//        }
-//    }
-//task demoqa_test(type: Test) {
-//    useJUnitPlatform {
-//        includeTags("demoqa")
-//        // только для класса с тегом demoqa (ну или метода если угодно, у нас класс)
-//    }
-//}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+
+    //этим мы расширяем логирование и при запуске теста в консоль
+    //будет выводиться больше данных
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+    task jenkins_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("jenkins")
+            // только для класса с тегом demoqa (ну или метода если угодно, у нас класс)
+        }
+    }

@@ -12,7 +12,7 @@ public class RegistrationWithTestDataTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    @Tag("demoqa")
+    @Tag("jenkins")
     void fillFormTest() {
         step("Open form", () -> {
         registrationPage
